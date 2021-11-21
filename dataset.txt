@@ -1,0 +1,18 @@
+I'm looking at 2 potential datasets for this project so far.
+
+First,
+https://www.kaggle.com/datasnaek/youtube-new
+
+This dataset contains over 6000 YouTube videos that were featured on the trending tab
+at some point and includes information on the video, the channel that posted it, it's category,
+it's tags, and the number of view, likes, and dislikes. I plan on seeing how different things
+affect the like to dislike ratio as well as the amount of views. Do videos in one category 
+get a higher ratio than videos in another? What about with times they were posted? Does the number of views versus l/d ratio show a trend? Does the season affect how often videos
+are disliked? are all questions I could potentially answer with this dataset.
+
+Second,
+https://www.kaggle.com/mysarahmadbhat/online-chess-games
+
+This dataset contains "Data for 20,000+ chess games played on Lichess, including moves, victor, rating, opening details and more." With this data, I could, for example, analyze if the number
+of turns affects one color's chance of winning, whether the number of turns affected the status
+(resign or mate), etc.
