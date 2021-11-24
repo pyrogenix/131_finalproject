@@ -51,12 +51,17 @@ def categorize(csv):
     Calls plt.show() to display the plot.
 """
 def makeplot(csv):
-    cat = sns.countplot('cat_name', data=csv, palette="Set1")
+    sns.set_style("darkgrid")
+    sns.set(rc={"figure.figsize":(8, 4)})
+    cat = sns.countplot('cat_name', data=csv, palette="muted")
     cat.set_xticklabels(cat.get_xticklabels(),rotation=90)
     cat.set_title("Trending Videos by Category", fontsize=15)
     cat.set_xlabel("Category", fontsize=12)
     cat.set_ylabel("Number of Videos", fontsize=12)
-    sns.set(rc={"figure.figsize":(8, 4)})
+    plt.savefig('ADAM_VIS2.png', bbox_inches="tight")
+    print('-----')
+    print('Figure has been saved as ADAM_VIS2.png')
+    print('-----')
     plt.show()
 
 """
