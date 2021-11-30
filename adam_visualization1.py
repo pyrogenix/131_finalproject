@@ -35,7 +35,7 @@ def make_subplots(csv):
 
     with sns.axes_style("darkgrid"):
         ax = f.add_subplot(gs[0, 0])
-        plot = sns.regplot(x, y, data=csv)
+        plot = sns.regplot(x, y, data=csv, scatter_kws={'s':4}, line_kws={"color": "red"})
         plot.set_xlabel('Views (in millions)', fontsize=12)
         plot.set_ylabel('Likes (in millions)', fontsize=12)
         plot.set_title('Views vs Likes', fontsize=15, weight=600)
@@ -46,7 +46,7 @@ def make_subplots(csv):
 
     with sns.axes_style("darkgrid"):
         ax = f.add_subplot(gs[1, 0])
-        plot2 = sns.regplot(x, z, data=csv)
+        plot2 = sns.regplot(x, z, data=csv, scatter_kws={'s':4}, line_kws={"color": "red"})
         plot2.set_xlabel('Views (in millions)', fontsize=12)
         plot2.set_ylabel('Dislikes (in millions)', fontsize=12)
         plot2.set_title('Views vs Dislikes', fontsize=15, weight=600)
