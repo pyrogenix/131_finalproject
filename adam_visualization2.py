@@ -48,16 +48,31 @@ def categorize(csv):
 
 """
     Uses Seaborn to make a lineplot showing the number videos in each category.
-    Calls plt.show() to display the plot.
+    Saves image and calls plt.show() to display the plot.
 """
 def makeplot(csv):
     sns.set_style("darkgrid")
     sns.set(rc={"figure.figsize":(8, 4)})
-    cat = sns.countplot('cat_name', data=csv, palette="muted")
-    cat.set_xticklabels(cat.get_xticklabels(),rotation=90)
-    cat.set_title("Trending Videos by Category", fontsize=15)
-    cat.set_xlabel("Category", fontsize=12)
-    cat.set_ylabel("Number of Videos", fontsize=12)
+
+    x = csv.cat_name
+    y = csv.views
+
+    fig, ax1 = plt.subplots()
+
+    ax2 = ax1.twinx()
+
+    sns.countplot(x = x, data=csv, ax = ax1, palette="muted")
+    sns.lineplot(x = x, y = y, ax = ax2, marker='o', palette="muted", data=csv)
+
+    ax1.set_title("Metrics by Category", fontsize=15, weight=600)
+    ax1.set_ylabel('Number of Videos')
+    ax2.set_ylabel('Average View Count (in millions)')
+    ax1.set_xlabel("Category", fontsize=12)
+
+    ax1.set_xticklabels(ax1.get_xticklabels(),rotation = 90)
+    ax2.yaxis.set_ticks([0, 1300000, 2600000, 3900000, 5200000, 6500000])
+    ax2.grid(None)
+
     plt.savefig('ADAM_VIS2.png', bbox_inches="tight")
     print('-----')
     print('Figure has been saved as ADAM_VIS2.png')
