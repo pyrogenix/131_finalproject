@@ -38,13 +38,13 @@ def makeplot(csv):
     sns.set(rc={"figure.figsize":(8, 4)})
 
     f = sns.barplot(x=a[0:20], y=b[0:20], data=csv, palette="muted")
-    f.set_xticklabels(f.get_xticklabels(),rotation = 90)
+    f.set_xticklabels(f.get_xticklabels(),rotation = 90, fontsize=10)
     f.set_title("Top 20 Channels by Number of Trending Videos", fontsize=15, weight=600)
     f.set_xlabel("Channel Name", fontsize=12)
     f.set_ylabel("Number of Trending Videos", fontsize=12)
     plt.ylim([150,210])
 
-    plt.savefig('ADAM_VIS3.png', bbox_inches="tight")
+    plt.savefig('ADAM_VIS3.png', bbox_inches="tight", dpi=600)
     print('-----')
     print('Figure has been saved as ADAM_VIS3.png')
     print('-----')

@@ -19,7 +19,16 @@ from matplotlib import pyplot as plt
 """
 def setup():
     csv = pd.read_csv('./datasets/USvideos.csv')
-    make_subplots(csv)
+    mode = input("Mode? (1/2)\nEnter 1 for likes/dislikes on separate subplots and 2 for likes/dislikes overlapping.\n")
+    if mode == "1":
+        print("Processing your visualization...")
+        make_subplots(csv)
+    elif mode == "2":
+        print("Processing your visualization...")
+        make_plot(csv)
+    else:
+        print('Invalid input. Please enter either "1" or "2".')
+        exit()
 
 """
     Makes subplots to compare view count vs likes and dislikes, showing a regression line for each.
@@ -56,9 +65,27 @@ def make_subplots(csv):
             [0, .2, .4, .6 , .8, 1, 1.2, 1.4, 1.6, 1.8])
     f.tight_layout()
 
-    plt.savefig('ADAM_VIS1.png', bbox_inches="tight")
+    plt.savefig('ADAM_VIS1.png', bbox_inches="tight", dpi=600)
     print('-----')
     print('Figure has been saved as ADAM_VIS1.png')
+    print('-----')
+    plt.show()
+
+def make_plot(csv):
+    with sns.axes_style("darkgrid"):
+        plot = sns.regplot(csv.views, csv.likes, data=csv, scatter_kws={'s':2})
+        plot2 = sns.regplot(csv.views, csv.dislikes, data=csv, scatter_kws={'s':2})
+        plot.set_xlabel('Views (in millions)', fontsize=12)
+        plot.set_ylabel('Likes / Dislikes (in millions)', fontsize=12)
+        plot.set_title('Views vs Likes / Dislikes', fontsize=15, weight=600)
+        plt.xticks([0, 25000000, 50000000, 75000000, 100000000, 125000000, 150000000, 175000000, 200000000, 225000000],\
+            [0, 25, 50, 75, 100, 125, 150, 175, 200, 225])
+        plt.yticks([0, 1000000, 2000000, 3000000, 4000000, 5000000, 6000000],\
+            [0, 1, 2, 3, 4, 5, 6])
+        plt.legend(labels=["Likes","Dislikes"])
+    plt.savefig('ADAM_VIS1-ALT.png', bbox_inches="tight", dpi=600)
+    print('-----')
+    print('Figure has been saved as ADAM_VIS1-ALT.png')
     print('-----')
     plt.show()
 

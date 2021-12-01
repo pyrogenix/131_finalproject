@@ -73,7 +73,7 @@ def makeplot(csv):
     ax2.yaxis.set_ticks([0, 1300000, 2600000, 3900000, 5200000, 6500000])
     ax2.grid(None)
 
-    plt.savefig('ADAM_VIS2.png', bbox_inches="tight")
+    plt.savefig('ADAM_VIS2.png', bbox_inches="tight", dpi=600)
     print('-----')
     print('Figure has been saved as ADAM_VIS2.png')
     print('-----')
